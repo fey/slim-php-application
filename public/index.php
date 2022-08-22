@@ -18,11 +18,9 @@ $container = require dirname(__DIR__) . '/container.php';
 
 $app = AppFactory::createFromContainer($container);
 
-$app->get('/', function (ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
 
+$app->get('/', function (ServerRequestInterface $request, ResponseInterface $response): ResponseInterface {
     $db = $this->get('db');
-    $db->setAsGlobal();
-    $db->bootEloquent();
     $users = $db->table('users')->select()->get();
     $response->getBody()->write($users->toJson());
 

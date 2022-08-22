@@ -7,6 +7,8 @@ return [
         $capsule = new Illuminate\Database\Capsule\Manager();
         $connection = $c->get('db.connection');
         $capsule->addConnection($connection);
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
 
         return $capsule;
     },
