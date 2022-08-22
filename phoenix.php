@@ -4,7 +4,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 /** @var \Psr\Container\ContainerInterface $container */
-$container = require __DIR__ . '/container.php';
+$container = require __DIR__ . '/config/container.php';
 
 return [
     'migration_dirs' => [

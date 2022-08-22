@@ -15,3 +15,6 @@ test-coverage:
 
 deploy:
 	git push heroku main
+
+migrate:
+	composer exec phoenix migrate
