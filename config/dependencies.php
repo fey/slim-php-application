@@ -1,6 +1,7 @@
 <?php
 
 use Psr\Container\ContainerInterface;
+use Slim\Views\Twig;
 
 return [
     'db' => function (ContainerInterface $c) {
@@ -12,4 +13,7 @@ return [
 
         return $capsule;
     },
+    'view' => function () {
+        return Twig::create(dirname(__DIR__) . '/templates');
+    }
 ];
