@@ -1,0 +1,15 @@
+{
+    "name": "feycot/slim-php-application",
+    "autoload": {
+        "psr-4": {
+            "Feycot\\SlimPhpApplication\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "feycot",
+            "email": "feycot@gmail.com"
+        }
+    ],
+    "require": {}
+}
