@@ -28,13 +28,27 @@ $containerBuilder->addDefinitions([
     'db.connection' => function (ContainerInterface $c): array {
         $url = $c->get('db.url');
 
-        return $url ? ['url' => $url] : [
+        if ($url) {
+            $database = parse_url($url, PHP_URL_PATH);
+            $username = parse_url($url, PHP_URL_USER);
+            $password = parse_url($url, PHP_URL_PASS);
+            $port = parse_url($url, PHP_URL_PORT);
+            $host = parse_url($url, PHP_URL_HOST);
+        } else {
+            $database = $c->get('db.database');
+            $username = $c->get('db.username');
+            $password = $c->get('db.password');
+            $port = $c->get('db.port');
+            $host = $c->get('db.host');
+        }
+
+        return [
             'driver' => $c->get('db.driver'),
-            'database' => $c->get('db.database'),
-            'username' => $c->get('db.username'),
-            'password' => $c->get('db.password'),
-            'port' => $c->get('db.port'),
-            'host' => $c->get('db.host'),
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'port' => $port,
+            'host' => $host,
         ];
     },
     'db' => function (ContainerInterface $c): Manager {
