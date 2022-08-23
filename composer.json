@@ -12,6 +12,17 @@
         }
     ],
     "require": {
+        "ext-bcmath": "*",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-pdo_pgsql": "*",
+        "ext-pdo_sqlite": "*",
+        "ext-sqlite3": "*",
+        "ext-xml": "*",
+        "ext-zip": "*",
         "slim/slim": "^4.10",
         "slim/psr7": "^1.5",
         "slim/http": "^1.2",
@@ -26,6 +37,7 @@
         "twig/html-extra": "^3.4"
     },
     "require-dev": {
+        "heroku/heroku-buildpack-php": "^214",
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "*",
         "symfony/var-dumper": "*"
