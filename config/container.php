@@ -18,37 +18,20 @@ $containerBuilder->addDefinitions([
     'app.debug' => env('APP_DEBUG', false),
     'app.env' => env('APP_ENV', 'development'),
     'db.driver' => 'pgsql',
-    'db.url' => env('DATABASE_URL'),
-    'db.host' => env('DB_HOST'),
-    'db.port' => env('DB_PORT', 54320),
-    'db.database' => env('DB_DATABASE'),
-    'db.username' => env('DB_USERNAME'),
-    'db.password' => env('DB_PASSWORD'),
-    'db.schema' => env('DB_SCHEMA'),
+    'db.host' => fn() => parse_url(env('DATABASE_URL', ''), PHP_URL_HOST) ?: env('DB_HOST'),
+    'db.port' => fn() => parse_url(env('DATABASE_URL', ''), PHP_URL_PORT) ?: env('DB_PORT', 5432),
+    'db.database' => fn() => trim(parse_url(env('DATABASE_URL', ''), PHP_URL_PATH), '/') ?: env('DB_DATABASE'),
+    'db.username' => fn() => parse_url(env('DATABASE_URL', ''), PHP_URL_USER) ?: env('DB_USERNAME'),
+    'db.password' => fn() => parse_url(env('DATABASE_URL', ''), PHP_URL_PASS) ?: env('DB_PASSWORD'),
+    'db.schema' => env('DB_SCHEMA', 'public'),
     'db.connection' => function (ContainerInterface $c): array {
-        $url = $c->get('db.url');
-
-        if ($url) {
-            $database = trim(parse_url($url, PHP_URL_PATH), '/');
-            $username = parse_url($url, PHP_URL_USER);
-            $password = parse_url($url, PHP_URL_PASS);
-            $port = parse_url($url, PHP_URL_PORT);
-            $host = parse_url($url, PHP_URL_HOST);
-        } else {
-            $database = $c->get('db.database');
-            $username = $c->get('db.username');
-            $password = $c->get('db.password');
-            $port = $c->get('db.port');
-            $host = $c->get('db.host');
-        }
-
         return [
             'driver' => $c->get('db.driver'),
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
-            'port' => $port,
-            'host' => $host,
+            'database' => $c->get('db.database'),
+            'username' => $c->get('db.username'),
+            'password' => $c->get('db.password'),
+            'port' => $c->get('db.port'),
+            'host' => $c->get('db.host'),
         ];
     },
     'db' => function (ContainerInterface $c): Manager {

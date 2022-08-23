@@ -52,7 +52,7 @@ return function (App $app) {
             'updated_at' => Carbon\Carbon::now(),
         ];
 
-        $user = $db->table('users')->where('email', Arr::get($data, 'email'));
+        $user = $db->table('users')->where('email', Arr::get($data, 'email'))->first();
 
         if ($user) {
             $this->get('flash')->addMessage('info', 'Пользователь уже существует');
