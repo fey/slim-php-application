@@ -21,7 +21,9 @@
         "slim/flash": "^0.4.0",
         "lulco/phoenix": "^2.2",
         "illuminate/support": "^9.25",
-        "slim/twig-view": "^3.3"
+        "slim/twig-view": "^3.3",
+        "vlucas/valitron": "^1.4",
+        "twig/html-extra": "^3.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",

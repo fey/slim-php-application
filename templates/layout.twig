@@ -28,6 +28,8 @@
         </nav>
     </header>
 
+    {% include 'shared/_flash.twig' %}
+
     <main class="flex-grow-1">
         <div class="container-lg mt-3">
           {% if block('title') is defined %}

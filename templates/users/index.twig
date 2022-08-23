@@ -1,6 +1,7 @@
 {% extends "layout.twig" %}
 {% block title %}Пользователи{% endblock %}
 {% block content %}
+<a class="btn btn-primary" href="{{ url_for('users.new') }}" role="button">Создать</a>
 <table class="table table-striped">
   <thead>
     <tr>

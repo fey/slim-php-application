@@ -1,0 +1,23 @@
+{% if flash.error %}
+  {% for messages in flash.error %}
+  <div class="alert alert-danger" role="alert">
+    {{messages|join('. ')}}
+  </div>
+  {% endfor %}
+{% endif %}
+
+{% if flash.success %}
+  {% for messages in flash.success %}
+  <div class="alert alert-success" role="alert">
+    {{messages|join('. ')}}
+  </div>
+  {% endfor %}
+{% endif %}
+
+{% if flash.info %}
+  {% for messages in flash.info %}
+  <div class="alert alert-info" role="alert">
+    {{messages|join('. ')}}
+  </div>
+  {% endfor %}
+{% endif %}
