@@ -1,10 +1,12 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+echo "TST!!!!!!!!!!!!!!";
 
-$app = require dirname(__DIR__) . '/config/bootstrap.php';
+// error_reporting(E_ALL);
+// ini_set("display_errors", 1);
 
-$app->run();
+// $app = require dirname(__DIR__) . '/config/bootstrap.php';
 
-echo 'jopa';
+// $app->run();
+
+// echo 'jopa';
