@@ -1,7 +1,7 @@
 <?php
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad();
 
 /** @var \Psr\Container\ContainerInterface $container */
 $container = require __DIR__ . '/config/container.php';
