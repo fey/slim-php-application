@@ -29,7 +29,7 @@ $containerBuilder->addDefinitions([
         $url = $c->get('db.url');
 
         if ($url) {
-            $database = parse_url($url, PHP_URL_PATH);
+            $database = trim(parse_url($url, PHP_URL_PATH), '/');
             $username = parse_url($url, PHP_URL_USER);
             $password = parse_url($url, PHP_URL_PASS);
             $port = parse_url($url, PHP_URL_PORT);
