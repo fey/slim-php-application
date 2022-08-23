@@ -12,6 +12,7 @@
         }
     ],
     "require": {
+        "ext-memcached": "*",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-dom": "*",
