@@ -1,4 +1,4 @@
-[![Build](https://github.com/fey/slim-php-application/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/fey/slim-php-application/actions/workflows/main.yml)
+[![Build](https://github.com/fey/slim-php-application/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/fey/slim-php-application/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/fey/slim-php-application/branch/main/graph/badge.svg?token=N8RO2YOQ75)](https://codecov.io/gh/fey/slim-php-application)
 
 # Slim Application
 
