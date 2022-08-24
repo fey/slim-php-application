@@ -15,8 +15,4 @@ $app = $container->get('app');
 $registerRoutes = require __DIR__ . '/routes.php';
 $registerRoutes($app);
 
-// Register middleware
-$registerMiddlewares = require __DIR__ . '/middlewares.php';
-$registerMiddlewares($app);
-
 return $app;

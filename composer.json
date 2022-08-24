@@ -36,7 +36,10 @@
         "twig/html-extra": "^3.4",
         "doctrine/migrations": "^3.5",
         "redant/twig-components": "^1.0",
-        "fakerphp/faker": "^1.20"
+        "fakerphp/faker": "^1.20",
+        "monolog/monolog": "^2.8",
+        "illuminate/events": "^9.26",
+        "rollbar/rollbar": "^3.1"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "^214",
