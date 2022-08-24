@@ -12,7 +12,6 @@
         }
     ],
     "require": {
-        "ext-memcached": "*",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-dom": "*",
@@ -31,11 +30,11 @@
         "illuminate/database": "^9.21",
         "vlucas/phpdotenv": "^5.4",
         "slim/flash": "^0.4.0",
-        "lulco/phoenix": "^2.2",
         "illuminate/support": "^9.25",
         "slim/twig-view": "^3.3",
         "vlucas/valitron": "^1.4",
-        "twig/html-extra": "^3.4"
+        "twig/html-extra": "^3.4",
+        "doctrine/migrations": "^3.5"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "^214",

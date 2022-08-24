@@ -17,4 +17,4 @@ deploy:
 	git push heroku main
 
 migrate:
-	composer exec phoenix migrate
+	composer exec doctrine-migrations migrate --no-interaction

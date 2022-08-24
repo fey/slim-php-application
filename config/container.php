@@ -2,7 +2,6 @@
 
 use DI\ContainerBuilder;
 use Illuminate\Database\Capsule\Manager;
-use Illuminate\Support\Arr;
 use Psr\Container\ContainerInterface;
 use Slim\App;
 use Slim\Factory\AppFactory;
@@ -10,6 +9,9 @@ use Slim\Flash\Messages;
 use Slim\Views\Twig;
 use Twig\Extension\DebugExtension;
 use Twig\Extra\Html\HtmlExtension;
+
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->safeLoad();
 
 $containerBuilder = new ContainerBuilder();
 
@@ -34,6 +36,23 @@ $containerBuilder->addDefinitions([
             'host' => $c->get('db.host'),
         ];
     },
+    'phoenix.config' => fn(ContainerInterface $c) => [
+        'migration_dirs' => [
+            __DIR__ . '/../database/migrations',
+        ],
+        'environments' => [
+            'pgsql' => [
+                'adapter' => 'pgsql',
+                'db_name' => $c->get('db.database'),
+                'host' => $c->get('db.host'),
+                'username' => $c->get('db.username'),
+                'password' => $c->get('db.password'),
+                'port' => $c->get('db.port'),
+            ],
+        ],
+        'default_environment' => 'pgsql',
+        'log_table_name' => 'phoenix_log',
+    ],
     'db' => function (ContainerInterface $c): Manager {
         $capsule = new Illuminate\Database\Capsule\Manager();
         $connection = $c->get('db.connection');
