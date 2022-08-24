@@ -64,8 +64,15 @@ $containerBuilder->addDefinitions([
     },
     'view' => function (ContainerInterface $c): Twig {
         $twig = Twig::create(dirname(__DIR__) . '/templates', ['cache' => false]);
+
+        // Initialize Twig Components registry
+        $componentsRegistry = new \RedAnt\TwigComponents\Registry($twig->getEnvironment());
+        $componentsRegistry->addComponent('nav_link', 'components/nav_link.twig');
+
         $twig->addExtension(new HtmlExtension());
         $twig->addExtension(new DebugExtension());
+        $twig->addExtension(new \RedAnt\TwigComponents\Extension($componentsRegistry));
+
         $twig->getEnvironment()->addGlobal('flash', $c->get('flash')->getMessages());
 
         if ($c->get('app.debug')) {

@@ -34,7 +34,8 @@
         "slim/twig-view": "^3.3",
         "vlucas/valitron": "^1.4",
         "twig/html-extra": "^3.4",
-        "doctrine/migrations": "^3.5"
+        "doctrine/migrations": "^3.5",
+        "redant/twig-components": "^1.0"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "^214",

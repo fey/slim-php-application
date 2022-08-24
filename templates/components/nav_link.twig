@@ -1,0 +1,7 @@
+{% component nav_link {
+    route_name:    { type: 'string', default: ''},
+    text:          { type: 'string', default: '' }
+} with options %}
+<li class="nav-item">
+    <a class="{{ html_classes('nav-link', {'active': is_current_url(nav_link.route_name) }) }}" href="{{ url_for(nav_link.route_name) }}">{{ nav_link.text }}</a>
+</li>
