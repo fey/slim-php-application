@@ -3,8 +3,25 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      DB_HOST: localhost
+      DB_PORT: 54320
+      DB_DATABASE: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: secret
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     steps:
       - uses: actions/checkout@v3
-      - run: make setup
+      - run: make install
+      - run: make migrate
       - run: make lint
       - run: make test
+
+    services:
+      postgres:
+        image: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
