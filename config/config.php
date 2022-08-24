@@ -13,6 +13,16 @@ return [
     'config.db.username' => fn() => parse_url(env('DATABASE_URL', ''), PHP_URL_USER) ?: env('DB_USERNAME'),
     'config.db.password' => fn() => parse_url(env('DATABASE_URL', ''), PHP_URL_PASS) ?: env('DB_PASSWORD'),
     'config.db.schema' => env('DB_SCHEMA', 'public'),
+    'config.db.migrations-db' => function (ContainerInterface $c) {
+        return [
+            'dbname' => $c->get('config.db.database'),
+            'user' => $c->get('config.db.username'),
+            'password' => $c->get('config.db.password'),
+            'host' => $c->get('config.db.host'),
+            'driver' => 'pdo_pgsql',
+            'port' => $c->get('config.db.port')
+        ];
+    },
     'config.db.connection' => function ($c): array {
         return [
             'driver' => $c->get('config.db.driver'),
