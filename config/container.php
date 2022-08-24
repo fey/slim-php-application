@@ -34,6 +34,7 @@ $containerBuilder->addDefinitions([
             'password' => $c->get('db.password'),
             'port' => $c->get('db.port'),
             'host' => $c->get('db.host'),
+            'fetch'     => \PDO::FETCH_ASSOC
         ];
     },
     'phoenix.config' => fn(ContainerInterface $c) => [
