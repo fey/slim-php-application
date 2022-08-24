@@ -18,7 +18,13 @@ jobs:
       - run: make install
       - run: make migrate
       - run: make lint
-      - run: make test
+      - run: make test-coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: build/logs/clover.xml
+          fail_ci_if_error: true
 
     services:
       postgres:

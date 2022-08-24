@@ -11,10 +11,15 @@ test:
 	composer exec --verbose phpunit tests
 
 test-coverage:
-	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
+	XDEBUG_MODE=coverage composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
 
 install:
 	composer install
+
+setup: prepare-env install
+
+prepare-env:
+	cp -n .env.example .env
 
 deploy:
 	git push heroku main
