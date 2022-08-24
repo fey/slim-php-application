@@ -9,7 +9,6 @@
     <arg name="extensions" value="php"/>
     <file>config</file>
     <file>database</file>
-    <file>src</file>
     <rule ref="PSR12">
     </rule>
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
