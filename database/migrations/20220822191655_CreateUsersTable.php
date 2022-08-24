@@ -22,7 +22,9 @@ final class CreateUsersTable extends AbstractMigration
 
     protected function down(): void
     {
-        $this->table('users')
+        if ($this->tableExists('users')) {
+            $this->table('users')
             ->drop();
+        }
     }
 }
